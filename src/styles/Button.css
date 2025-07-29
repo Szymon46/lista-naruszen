@@ -1,0 +1,52 @@
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+
+  border: none;
+  background-color: blue;
+  position: absolute;
+
+  bottom: 2%;
+  right: 2%;
+
+  transition: linear 0.25s;
+}
+
+.button:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+.button::before,
+.button::after {
+  display: block;
+  position: absolute;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+}
+
+.button::before {
+  width: 80%;
+  height: 10%;
+}
+
+.button::after {
+  width: 10%;
+  height: 80%;
+}
+
+.clicked {
+  /* transform-origin: ; */
+  rotate: 45deg;
+}
+
+/* do this \/ when the form is opened*/
+/* .button:hover::before,
+.button:hover::after {
+  transform-origin: top left;
+  rotate: 45deg;
+} */
