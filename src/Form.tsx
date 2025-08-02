@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction, SyntheticEvent } from "react";
 import { Violation } from "./types";
 
 import "./styles/Form.css";
@@ -30,15 +30,15 @@ export default function Form({ setViolations }: FormProps) {
     }
   }
 
-  function handleChangeTitle(e: any) {
-    if (e.target.value.length <= titleCharsNum) {
-      setTitle(e.target.value);
+  function handleChangeTitle(e: SyntheticEvent<HTMLInputElement>) {
+    if (e.currentTarget.value.length <= titleCharsNum) {
+      setTitle(e.currentTarget.value);
     }
   }
 
-  function handleChangeDescription(e: any) {
-    if (e.target.value.length <= descriptionCharsNum) {
-      setDescription(e.target.value);
+  function handleChangeDescription(e: SyntheticEvent<HTMLTextAreaElement>) {
+    if (e.currentTarget.value.length <= descriptionCharsNum) {
+      setDescription(e.currentTarget.value);
     }
   }
 
@@ -71,3 +71,5 @@ export default function Form({ setViolations }: FormProps) {
     </div>
   );
 }
+
+//added event types

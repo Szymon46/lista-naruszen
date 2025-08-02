@@ -24,6 +24,8 @@
   width: 80%;
   padding: 10px;
 
+  font-size: 13px;
+
   border: none;
   border-radius: 5px;
 }
@@ -35,7 +37,6 @@
 .form__description {
   height: 30%;
   resize: none;
-  font-size: 13px;
 }
 
 .form__label {
@@ -56,6 +57,8 @@
 
   background-color: var(--theme-color);
   color: var(--text-color);
+
+  font-size: 16px;
 
   border: none;
   border-radius: 50px;
