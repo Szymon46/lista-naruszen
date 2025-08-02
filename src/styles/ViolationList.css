@@ -1,0 +1,21 @@
+.violation-list {
+  width: 90%;
+  height: 40%;
+  margin: 5% auto;
+
+  background-color: var(--main-color-dark);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  scrollbar-color: var(--main-color) var(--main-color-dark);
+  scrollbar-width: thin;
+  overflow-y: auto;
+
+  list-style: none;
+
+  border-radius: 10px;
+  border: 2px solid var(--main-color-dark);
+}

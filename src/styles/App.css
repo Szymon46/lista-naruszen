@@ -1,8 +1,16 @@
 .app {
-  margin: 0 auto;
-  height: 100vh;
-  width: 800px;
   position: relative;
-  border: 3px solid gray;
-  /* background-color: #fff; */
+
+  height: 90vh;
+  width: 800px;
+
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: var(--main-color);
+
+  border-radius: 30px;
+
+  font-family: sans-serif;
 }

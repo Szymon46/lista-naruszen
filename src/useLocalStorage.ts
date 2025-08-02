@@ -14,5 +14,5 @@ export function useLocalStorage<T>(initState: T, key: string) {
     [key, value]
   );
 
-  return [value, setValue];
+  return {value, setValue};
 }

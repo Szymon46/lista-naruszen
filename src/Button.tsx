@@ -1,16 +1,27 @@
-import "./styles/Button.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-export default function Button({ isFormOpen, setIsFormOpen }: any) {
+import "./styles/Button.css";
+import { Dispatch, SetStateAction } from "react";
+
+type ButtonProps = {
+  isFormOpen: boolean;
+  setIsFormOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function Button({ isFormOpen, setIsFormOpen }: ButtonProps) {
   function handleToggleForm() {
     setIsFormOpen((isOpen: boolean) => !isOpen);
   }
 
-  // if the form is open then rotate the button (add the css class .clicked)
-
   return (
     <button
-      className={isFormOpen ? "button clicked" : "button"}
+      className={
+        isFormOpen ? "form-open-btn form-open-btn--clicked" : "form-open-btn"
+      }
       onClick={handleToggleForm}
-    ></button>
+    >
+      <FontAwesomeIcon className="form-open-btn__icon" icon={faPlus} />
+    </button>
   );
 }

@@ -1,9 +1,18 @@
+:root {
+  --main-color: #383838;
+  --main-color-dark: #292929;
+  --theme-color: #5721d4;
+  --theme-color-shadow: #5024b8;
+  --text-color: #fff;
+  --undertext-color: #707070;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* body {
-  background-color: gray;
-} */
+body {
+  background-color: var(--theme-color);
+}

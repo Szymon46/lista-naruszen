@@ -1,22 +1,27 @@
-import { useState } from "react";
-import { LItem } from "./types";
+import { useState, Dispatch, SetStateAction } from "react";
+import { Violation } from "./types";
 
 import "./styles/Form.css";
-// TODO: change the any type to a proper interface
 
-export default function Form({ setListOfItems }: any) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+const titleCharsNum = 50;
+const descriptionCharsNum = 100;
 
-  function handleSaveListItem() {
-    if (title !== "") {
-      // TODO: give an alternative if crypto.randomUUID is not supported
-      setListOfItems((t: LItem[]) => [
-        ...t,
+type FormProps = {
+  setViolations: Dispatch<SetStateAction<Violation[]>>;
+};
+
+export default function Form({ setViolations }: FormProps) {
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+
+  function handleSaveViolation() {
+    if (title.trim() !== "") {
+      setViolations((violations: Violation[]) => [
+        ...violations,
         {
           id: crypto.randomUUID(),
           title: title,
-          description: description,
+          description: description.trim() ? description : "",
         },
       ]);
 
@@ -25,22 +30,42 @@ export default function Form({ setListOfItems }: any) {
     }
   }
 
+  function handleChangeTitle(e: any) {
+    if (e.target.value.length <= titleCharsNum) {
+      setTitle(e.target.value);
+    }
+  }
+
+  function handleChangeDescription(e: any) {
+    if (e.target.value.length <= descriptionCharsNum) {
+      setDescription(e.target.value);
+    }
+  }
+
   return (
     <div className="form">
       <input
-        className="form-title"
+        className="form__title"
         type="text"
+        id="form__title"
         placeholder="Tytuł"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleChangeTitle}
       />
+      <label className="form__label" htmlFor="form__title">
+        Pozostało {titleCharsNum - title.length} znaków
+      </label>
       <textarea
-        className="form-description"
-        placeholder="Opis"
+        className="form__description"
+        id="form__description"
+        placeholder="Opis (opcjonalny)"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={handleChangeDescription}
       ></textarea>
-      <button className="form-btn" onClick={handleSaveListItem}>
+      <label className="form__label" htmlFor="form__description">
+        Pozostało {descriptionCharsNum - description.length} znaków
+      </label>
+      <button className="form__btn" onClick={handleSaveViolation}>
         Zapisz
       </button>
     </div>

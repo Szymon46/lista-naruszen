@@ -1,26 +1,24 @@
 import { useState } from "react";
-import { LItem } from "./types";
+import { useLocalStorage } from "./useLocalStorage";
+import { Violation } from "./types";
 import Header from "./Header";
-import List from "./List";
+import ViolationList from "./ViolationList";
 import Form from "./Form";
 import Button from "./Button";
 
 import "./styles/App.css";
-import { useLocalStorage } from "./useLocalStorage";
 
 export default function App() {
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
-  const [listOfItems, setListOfItems] = useLocalStorage<LItem[]>([], "items");
+  const { value: violations, setValue: setViolations } = useLocalStorage<
+    Violation[]
+  >([], "violations");
 
   return (
     <div className="app">
       <Header />
-      <List listOfItems={listOfItems} setListOfItems={setListOfItems} />
-      {isFormOpen ? (
-        <Form listOfItems={listOfItems} setListOfItems={setListOfItems} />
-      ) : (
-        ""
-      )}
+      <ViolationList violations={violations} setViolations={setViolations} />
+      {isFormOpen ? <Form setViolations={setViolations} /> : ""}
       <Button isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
     </div>
   );
